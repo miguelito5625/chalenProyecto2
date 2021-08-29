@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>CodePen - Day 001 Login Form</title>
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans:600'>
+    <link rel="stylesheet" href="./style.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.4/dist/sweetalert2.all.min.js"></script>
+
+</head>
+
+<body>
+    <!-- partial:index.partial.html -->
+    <div class="login-wrap">
+        <div class="login-html">
+
+            <input id="tab-1" type="radio" name="tab" class="sign-in" checked>
+
+            <label for="tab-1" class="tab">Administrador</label>
+
+            <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Usuario</label>
+
+            <div class="login-form">
+                <div class="sign-in-htm">
+                    <div class="group">
+
+                        <label for="user" class="label">CUI</label>
+                        <input id="cui_admin" type="text" class="input" value="123456789">
+                    </div>
+                    <div class="group">
+                        <label for="pass" class="label">Clave</label>
+                        <input id="clave_admin" type="password" class="input" data-type="password" value="12345">
+                    </div>
+
+                    <div class="group">
+                        <!-- <input type="submit" class="button" value="Iniciar Sesión"> -->
+                        <button class="button" onClick="inicioSesionAdmin()">Iniciar sesion</button>
+                    </div>
+                    <div class="hr"></div>
+                    <div class="foot-lnk">
+                        <!-- <a href="#forgot">Forgot Password?</a> -->
+                    </div>
+                </div>
+                <div class="sign-up-htm">
+                    <!-- <form action="guardar.php" method="POST"> -->
+                    <div class="group">
+                        <div class="group">
+                            <label for="pass" class="label">Cui</label>
+                            <input id="usuario_cui" type="text" class="input" data-type="text" value="123">
+                        </div>
+
+                        <div class="group">
+                            <label for="user" class="label">Nombres</label>
+                            <input id="usuario_nombres" type="text" class="input" value="test1">
+                        </div>
+
+                        <div class="group">
+                            <label for="pass" class="label">Apellidos</label>
+                            <input id="usuario_apellidos" type="text" class="input" data-type="text" value="test2">
+                        </div>
+
+
+                        <div class="group">
+                            <label for="pass" class="label">Fecha de nacimiento</label>
+                            <input id="usuario_nacimiento" type="date" class="input" value="2021-08-02">
+                        </div>
+
+                        <div class="group">
+                            <label for="pass" class="label">Clave</label>
+                            <input id="usuario_clave" type="password" class="input" value="12345">
+                        </div>
+
+                        <div class="group">
+                            <!-- <input type="button" class="button" value="Registrarme"> -->
+                            <button class="button" onClick="registroUsuario()">Registrarme</button>
+
+                            <!-- </form> -->
+
+                        </div>
+
+                        <div class="foot-lnk">
+                            <label for="tab-1">Ya estas registrado?</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            function registroUsuario() {
+                const usuario_cui = document.getElementById('usuario_cui').value;
+                const usuario_nombres = document.getElementById('usuario_nombres').value;
+                const usuario_apellidos = document.getElementById('usuario_apellidos').value;
+                const usuario_nacimiento = document.getElementById('usuario_nacimiento').value;
+                const usuario_clave = document.getElementById('usuario_clave').value;
+
+
+                const datosUsuario = {
+                    cui: usuario_cui,
+                    nombres: usuario_nombres,
+                    apellidos: usuario_apellidos,
+                    nacimiento: usuario_nacimiento,
+                    clave: usuario_clave
+                };
+
+                console.log(datosUsuario);
+
+                $.ajax({
+                    url: "/desarrollo/proyecto2/funciones/guardarUsuario.php",
+                    type: "post",
+                    data: datosUsuario,
+                    success: function (response) {
+
+                        console.log(response);
+
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        console.log(textStatus, errorThrown);
+                    }
+                });
+            }
+
+            function inicioSesionAdmin() {
+                const cui_admin = document.getElementById('cui_admin').value;
+                const clave_admin = document.getElementById('clave_admin').value;
+
+
+                const datosAdmin = {
+                    cui: cui_admin,
+                    clave: clave_admin
+                };
+
+                // console.log(datosAdmin);
+
+                $.ajax({
+                    url: "/desarrollo/proyecto2/funciones/iniciarSesionAdmin.php",
+                    type: "post",
+                    data: datosAdmin,
+                    success: function (response) {
+                        console.log(response);
+
+                        if (response.estado === "ok") {
+                            Swal.fire(
+                                'Sesion iniciada!',
+                                'Click en el boton para continuar',
+                                'success'
+                            ).then((result) => {
+                                //Redireccionar aqui
+                            });
+                        } else {
+                            Swal.fire(
+                                'Usuario no existe',
+                                '',
+                                'error'
+                            ).then((result) => {
+                                //Aqui de momento no hacer nada
+                            });
+                        }
+
+
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        console.log(textStatus, errorThrown);
+                    }
+                });
+            }
+        </script>
+
+
+</body>
+
+</html>

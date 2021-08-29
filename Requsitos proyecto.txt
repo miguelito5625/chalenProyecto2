@@ -1,0 +1,14 @@
+-Registro de vacunacion
+-Pre-registro
+-Registro personal
+-Generar una cita
+-Registro de primera vacunacion 
+-Registro de segunda vacunacion
+-Generar un certificado
+--------------------------------------------------------------------------------
+Inventario
+--------------------------------------------------------------------------------
+-Control usuarios administradores
+-Control catalogo de Vacunas
+-Control catalogo de centros de vacunacion
+-Control de grupos vacunados
