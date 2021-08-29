@@ -127,13 +127,14 @@
                 const cui_admin = document.getElementById('cui_admin').value;
                 const clave_admin = document.getElementById('clave_admin').value;
 
-
                 const datosAdmin = {
                     cui: cui_admin,
                     clave: clave_admin
                 };
 
                 // console.log(datosAdmin);
+
+                swalCargando();
 
                 $.ajax({
                     url: "/desarrollo/proyecto2/funciones/iniciarSesionAdmin.php",
@@ -143,21 +144,25 @@
                         console.log(response);
 
                         if (response.estado === "ok") {
-                            Swal.fire(
-                                'Sesion iniciada!',
-                                'Click en el boton para continuar',
-                                'success'
-                            ).then((result) => {
-                                //Redireccionar aqui
-                            });
+                            setTimeout(() => {
+                                Swal.fire(
+                                    'Sesion iniciada!',
+                                    'Click en el boton para continuar',
+                                    'success'
+                                ).then((result) => {
+                                    //Redireccionar aqui
+                                });
+                            }, 2000);
                         } else {
-                            Swal.fire(
-                                'Usuario no existe',
-                                '',
-                                'error'
-                            ).then((result) => {
-                                //Aqui de momento no hacer nada
-                            });
+                            setTimeout(() => {
+                                Swal.fire(
+                                    'Usuario no existe',
+                                    '',
+                                    'error'
+                                ).then((result) => {
+                                    //Aqui de momento no hacer nada
+                                });
+                            }, 2000);
                         }
 
 
@@ -167,6 +172,22 @@
                     }
                 });
             }
+
+
+            function swalCargando() {
+                Swal.fire({
+                    title: 'Iniciando sesion',
+                    timerProgressBar: true,
+                    // timer: 2000,
+                    didOpen: () => {
+                        Swal.showLoading()
+                    }
+                }).then((result) => {
+
+                })
+            }
+
+
         </script>
 
 
