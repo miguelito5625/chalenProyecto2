@@ -59,7 +59,7 @@ function inicioSesionAdmin() {
                         'success'
                     ).then((result) => {
                         //Redireccionar aqui
-                        window.location.href = "/desarrollo/proyecto2/paginas/sistema/administrador/principal.html";
+                        window.location.href = "../sistema/administrador/principal.html";
                     });
                 }, 2000);
             } else {
@@ -111,7 +111,7 @@ function inicioSesionUsuario() {
                         'success'
                     ).then((result) => {
                         //Redireccionar aqui
-                        window.location.href = "/desarrollo/proyecto2/paginas/sistema/usuario/principal.html";
+                        window.location.href = "../sistema/usuario/principal.html";
                     });
                 }, 2000);
             } else {
