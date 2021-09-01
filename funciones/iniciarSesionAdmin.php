@@ -18,6 +18,8 @@ if ($result->num_rows == 1) {
   while ($row = $result->fetch_assoc()) {
     $rows[] = $row;
   }
+  session_start();
+  $_SESSION['usuario'] = $rows;
   $myObj->usuario = $rows;
   $myObj->mensaje = "usuario existe";
   $myObj->estado = "ok";

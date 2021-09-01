@@ -17,7 +17,7 @@ function registroUsuario() {
     console.log(datosUsuario);
 
     $.ajax({
-        url: "/desarrollo/proyecto2/funciones/guardarUsuario.php",
+        url: "../../funciones/guardarUsuario.php",
         type: "post",
         data: datosUsuario,
         success: function (response) {
@@ -45,7 +45,7 @@ function inicioSesionAdmin() {
     swalCargando();
 
     $.ajax({
-        url: "/desarrollo/proyecto2/funciones/iniciarSesionAdmin.php",
+        url: "../../funciones/iniciarSesionAdmin.php",
         type: "post",
         data: datosAdmin,
         success: function (response) {
@@ -97,7 +97,7 @@ function inicioSesionUsuario() {
     swalCargando();
 
     $.ajax({
-        url: "/desarrollo/proyecto2/funciones/iniciarSesionUsuario.php",
+        url: "../../funciones/iniciarSesionUsuario.php",
         type: "post",
         data: datosUsuario,
         success: function (response) {
