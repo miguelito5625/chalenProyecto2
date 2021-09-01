@@ -19,6 +19,28 @@ CREATE TABLE vacuna(
     nombre VARCHAR(30) NOT NULL
 );
 
+CREATE TABLE centro_vacunacion(
+    id int NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    nombre VARCHAR(30) NOT NULL
+);
+
+INSERT INTO
+    `centro_vacunacion`(`nombre`)
+VALUES
+    ("Morales");
+    
+INSERT INTO
+    `centro_vacunacion`(`nombre`)
+VALUES
+    ("Los Amates");
+    
+INSERT INTO
+    `centro_vacunacion`(`nombre`)
+VALUES
+    ("Puerto Barrios");
+    
+
+
 CREATE TABLE usuario (
     id int NOT NULL PRIMARY KEY AUTO_INCREMENT,
     cui varchar(20) NOT NULL,

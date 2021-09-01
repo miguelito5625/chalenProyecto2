@@ -3,7 +3,7 @@ header('Content-Type: application/json');
 
 include 'conexion.php';
 
-$sql = "SELECT id, nombre FROM vacuna;";
+$sql = "SELECT id, cui, nombres, apellidos, nacimiento FROM usuario;";
 $result = $conn->query($sql);
 $rows = array();
 $conn->close();

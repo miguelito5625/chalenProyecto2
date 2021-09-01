@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asociar vacunas</title>
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.0/css/jquery.dataTables.min.css">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/css/bootstrap-select.min.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script>
+
+    <script src="https://cdn.datatables.net/1.11.0/js/jquery.dataTables.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/js/bootstrap-select.min.js"></script>
+
+</head>
+
+<body>
+
+    <div class="container mt-3 d-flex justify-content-center">
+
+        <div class="card" style="width: 80%;">
+            <div class="card-body">
+                <h5 class="card-title">Asociar vacuna</h5>
+
+                    <div class="input-group mb-3">
+                        <input type="text" id="inputUsuarioSeleccionado" class="form-control" placeholder="Seleccionar usuario" readonly>
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" type="button" data-toggle="modal" data-target="#modalUsuarios">Buscar</button>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+
+                        <select id="selectVacunas" class="selectpicker form-control mb-3" data-style="btn-dark"
+                            title="Seleccione una vacuna" data-live-search="true">
+                            <!-- <option data-tokens="ketchup mustard">Hot Dog, Fries and a Soda</option> -->
+                            </select>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <select id="selectCentrosVacunacion" class="selectpicker form-control mb-3" data-style="btn-dark"
+                            title="Seleccione el centro de vacunacion" data-live-search="true">
+                            <!-- <option data-tokens="ketchup mustard">Hot Dog, Fries and a Soda</option> -->
+                        </select>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Establecer Fecha</label>
+                        <input type="date" class="form-control" id="fecha_vacunacion" aria-describedby="emailHelp">
+                      </div>
+
+
+
+                    <button class="btn btn-primary" onClick="guardarAsociacion()">Guardar</button>
+
+
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <!-- Modal -->
+<div class="modal fade" id="modalUsuarios" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="modalUsuariosLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalUsuariosLabel">Seleccione un usuario</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+         
+            <table id="tabla_usuarios" class="display" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>Cui</th>
+                        <th>Nombres</th>
+                        <th>Apellidos</th>
+                        <th>Nacimiento</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>id</th>
+                        <th>Cui</th>
+                        <th>Nombres</th>
+                        <th>Apellidos</th>
+                        <th>Nacimiento</th>
+                    </tr>
+                </tfoot>
+            </table>
+            
+
+        </div>
+        <!-- <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Understood</button>
+        </div> -->
+      </div>
+    </div>
+  </div>
+
+    <script src="js/asociarvacunas.js"></script>
+
+</body>
+
+</html>
