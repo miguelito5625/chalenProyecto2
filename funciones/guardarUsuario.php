@@ -17,5 +17,3 @@ $rol = 1;
     echo "Error: " . $sql . "<br>" . $conn->error;
   }
  $conn->close();
-
-// echo "cui: $cui  nombres: $nombres apellidos: $apellidos nacimiento: $nacimiento clave: $clave";

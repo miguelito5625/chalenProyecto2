@@ -86,4 +86,21 @@ function guardarAsociacion(){
 
     console.log(datos);
 
+    $.ajax({
+        url: "../../funciones/guardarGrupoVacunacion.php",
+        type: "post",
+        data: datos,
+        success: function (response) {
+            console.log(response);
+
+            alert("asociacion realizada");
+
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log(textStatus, errorThrown);
+            alert("Error: no se pudo guardar el registro");
+        }
+    });
+
+
 }
