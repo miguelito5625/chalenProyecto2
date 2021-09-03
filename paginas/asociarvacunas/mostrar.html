@@ -25,7 +25,55 @@
 </head>
 <body>
     
+    <div class="container mt-3 d-flex justify-content-center">
+
+        <div class="card" style="width: 48rem;">
+            <div class="card-body">
+                <h5 class="card-title">Lista de Asociasiones</h5>
+
+                <table id="tabla_asociaciones" class="display" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>id</th>
+                            <th>CUI</th>
+                            <th>Nombres</th>
+                            <th>Apellidos</th>
+                            <th>Lugar</th>
+                            <th>Fecha</th>
+                            <th>Vacuna</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>id</th>
+                            <th>CUI</th>
+                            <th>Nombres</th>
+                            <th>Apellidos</th>
+                            <th>Lugar</th>
+                            <th>Fecha</th>
+                            <th>Vacuna</th>
+                        </tr>
+                    </tfoot>
+                </table>
+
+            </div>
+        </div>
+
+    </div>
     
-    
+    <script>
+        $(document).ready(function () {
+            var tabla_asociaciones = $('#tabla_asociaciones').DataTable({
+                "ajax": '../../funciones/listarGruposVacunacion.php'
+            });
+
+            $('#tabla_asociaciones tbody').on('click', 'tr', function () {
+                console.log(tabla_asociaciones.row(this).data());
+            });
+
+        });
+    </script>
+
+
 </body>
 </html>l

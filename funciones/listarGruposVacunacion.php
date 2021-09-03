@@ -3,7 +3,10 @@ header('Content-Type: application/json');
 
 include 'conexion.php';
 
-$sql = "SELECT id, cui, nombres, apellidos, nacimiento FROM usuario WHERE idRol = 2;";
+$sql = "SELECT id_grupo_vacunacion, cui, nombres_usuario, apellidos_usuario, 
+lugar, fecha, nombre_vacuna
+FROM vista_grupos_vacunacion;";
+
 $result = $conn->query($sql);
 $rows = array();
 $conn->close();

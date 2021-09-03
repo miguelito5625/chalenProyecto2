@@ -1,63 +1,83 @@
-CREATE TABLE rol(
-    id int NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    rol INT NOT NULL,
-    descripcion VARCHAR(20)
-);
+CREATE TABLE rol
+  (
+     id          INT NOT NULL PRIMARY KEY auto_increment,
+     rol         INT NOT NULL,
+     descripcion VARCHAR(20)
+  );
 
-INSERT INTO
-    `rol`(`rol`, `descripcion`)
-VALUES
-    (1, "Administrador");
+INSERT INTO `rol`
+            (`rol`,
+             `descripcion`)
+VALUES      (1,
+             "administrador");
 
-INSERT INTO
-    `rol`(`rol`, `descripcion`)
-VALUES
-    (2, "Usuario");
+INSERT INTO `rol`
+            (`rol`,
+             `descripcion`)
+VALUES      (2,
+             "usuario");
 
-CREATE TABLE vacuna(
-    id int NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    nombre VARCHAR(30) NOT NULL
-);
+CREATE TABLE vacuna
+  (
+     id     INT NOT NULL PRIMARY KEY auto_increment,
+     nombre VARCHAR(30) NOT NULL
+  );
 
-CREATE TABLE centro_vacunacion(
-    id int NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    nombre VARCHAR(30) NOT NULL
-);
+CREATE TABLE centro_vacunacion
+  (
+     id     INT NOT NULL PRIMARY KEY auto_increment,
+     nombre VARCHAR(30) NOT NULL
+  );
 
-INSERT INTO
-    `centro_vacunacion`(`nombre`)
-VALUES
-    ("Morales");
-    
-INSERT INTO
-    `centro_vacunacion`(`nombre`)
-VALUES
-    ("Los Amates");
-    
-INSERT INTO
-    `centro_vacunacion`(`nombre`)
-VALUES
-    ("Puerto Barrios");
-    
+INSERT INTO `centro_vacunacion`
+            (`nombre`)
+VALUES      ("morales");
 
+INSERT INTO `centro_vacunacion`
+            (`nombre`)
+VALUES      ("los amates");
 
-CREATE TABLE usuario (
-    id int NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    cui varchar(20) NOT NULL,
-    nombres varchar(50) NOT NULL,
-    apellidos varchar(50) NOT NULL,
-    nacimiento DATE NOT NULL,
-    clave VARCHAR(200) NOT NULL,
-    idRol INT NOT NULL,
-    CONSTRAINT FK_usuario_rol FOREIGN KEY (idRol) REFERENCES rol(id)
-);
+INSERT INTO `centro_vacunacion`
+            (`nombre`)
+VALUES      ("puerto barrios");
 
-CREATE TABLE grupo_vacunacion(
-    id int NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    fecha DATE NOT NULL,
-    lugar VARCHAR(50) NOT NULL,
-    idUsuario INT NOT NULL,
-    idVacuna INT NOT NULL,
-    CONSTRAINT FK_grupo_vacunacion_usuario FOREIGN KEY (idUsuario) REFERENCES usuario(id),
-    CONSTRAINT FK_grupo_vacunacion_vacunas FOREIGN KEY (idVacuna) REFERENCES vacuna(id)
-);
+CREATE TABLE usuario
+  (
+     id         INT NOT NULL PRIMARY KEY auto_increment,
+     cui        VARCHAR(20) NOT NULL,
+     nombres    VARCHAR(50) NOT NULL,
+     apellidos  VARCHAR(50) NOT NULL,
+     nacimiento DATE NOT NULL,
+     clave      VARCHAR(200) NOT NULL,
+     idrol      INT NOT NULL,
+     CONSTRAINT fk_usuario_rol FOREIGN KEY (idrol) REFERENCES rol(id)
+  );
+
+CREATE TABLE grupo_vacunacion
+  (
+     id        INT NOT NULL PRIMARY KEY auto_increment,
+     fecha     DATE NOT NULL,
+     lugar     VARCHAR(50) NOT NULL,
+     idusuario INT NOT NULL,
+     idvacuna  INT NOT NULL,
+     CONSTRAINT fk_grupo_vacunacion_usuario FOREIGN KEY (idusuario) REFERENCES
+     usuario(id),
+     CONSTRAINT fk_grupo_vacunacion_vacunas FOREIGN KEY (idvacuna) REFERENCES
+     vacuna(id)
+  );
+
+CREATE OR REPLACE view vista_grupos_vacunacion
+AS
+  SELECT grupo_vacunacion.id AS id_grupo_vacunacion,
+         grupo_vacunacion.fecha,
+         grupo_vacunacion.lugar,
+         usuario.id          AS id_usuario,
+         usuario.cui,
+         usuario.nombres     AS nombres_usuario,
+         usuario.apellidos   AS apellidos_usuario,
+         usuario.nacimiento  AS nacimiento_usuario,
+         vacuna.id           AS id_vacuna,
+         vacuna.nombre       AS nombre_vacuna
+  FROM   grupo_vacunacion
+         INNER JOIN usuario USING (id)
+         INNER JOIN vacuna USING (id); 

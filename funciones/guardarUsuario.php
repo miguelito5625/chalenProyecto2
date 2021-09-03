@@ -7,7 +7,7 @@ $nombres = $_POST["nombres"];
 $apellidos = $_POST["apellidos"];
 $nacimiento = $_POST["nacimiento"];
 $clave = hash('md5', $_POST["clave"]);
-$rol = 1;
+$rol = 2;
 
  $sql = "insert into rmorales.usuario(cui,nombres,apellidos,nacimiento,clave,idRol) VALUES('$cui', '$nombres', '$apellidos', '$nacimiento', '$clave', $rol)";
  
