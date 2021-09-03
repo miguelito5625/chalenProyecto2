@@ -111,9 +111,14 @@ function inicioSesionUsuario() {
                         'success'
                     ).then((result) => {
                         //Redireccionar aqui
-                        window.location.href = "../sistema/usuario/principal.html";
+                        const cui = response.usuario[0].cui;
+                        const lugar = response.usuario[0].lugar;
+                        const dosisuno = response.usuario[0].fecha;
+                        const nombre = response.usuario[0].nombres_usuario + ' ' + response.usuario[0].apellidos_usuario;
+                        
+                        window.location.href = `../sistema/usuario/principal.html?cui=${cui}&nombre=${nombre}&lugar=${lugar}&dosisuno=${dosisuno}`;
                     });
-                }, 2000);
+                }, 100);
             } else {
                 setTimeout(() => {
                     Swal.fire(

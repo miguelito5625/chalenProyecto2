@@ -1,12 +1,75 @@
 <!DOCTYPE html>
-<html lang="en">
+
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Principal Usuario</title>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment-with-locales.min.js"></script>
 </head>
-<body>
-    <h1>Principal Usuario</h1>
+
+
+<body background="fondo2.jpg">
+    <h1 align="center">Datos de Vacunacion</h1>
+    <table width="70%" border="5px" align="center">
+
+        <tr align="center">
+            <TR>
+                <TH>DPI</th>
+                <TD id="dpiUsuario">Texto de la base de datos</TD>
+                <TR>
+                    <TH>Nombre</th>
+                    <TD id="nombreUsuario">Texto de la base de datos</TD>
+                    <TR>
+                        <TH>puesto de Vacunacion</th>
+                        <TD id="puestoVacunacion">Texto de la base de datos</TD>
+                    </tr>
+    </table>
+    <h1 align="center">Fecha de Administracion</h1>
+    <table width="70%" border="5px" align="center">
+
+        <tr align="center">
+            <TR>
+                <TH>1ra. Dosis</th>
+                <TD id="dosisuno">Texto de la base de datos</TD>
+                <TR>
+                    <TH>2da. Dosis</th>
+                    <TD id="dosisdos">Texto de la base de datos</TD>
+                    <TR>
+                        <TH>Refuerzo</th>
+                        <TD id="dosistres">Texto de la base de datos</TD>
+                    </tr>
+    </table>
+
+    <a class="boton" href="" target="_blank">atras</a>
+    <a class="boton" href="" target="_blank">Imprimir</a>
+
 </body>
+
+<script>
+var dpiUsuario = document.getElementById("dpiUsuario");
+var nombreUsuario = document.getElementById("nombreUsuario");
+var puestoVacunacion = document.getElementById("puestoVacunacion");
+var dosisuno = document.getElementById("dosisuno");
+var dosisdos = document.getElementById("dosisdos");
+var dosistres = document.getElementById("dosistres");
+// dpiUsuario.innerHTML = "esto es una prueba";
+
+var url_string = window.location.href;
+var url = new URL(url_string);
+var cui = url.searchParams.get("cui");
+var nombre = url.searchParams.get("nombre");
+var lugar = url.searchParams.get("lugar");
+var fechadosisuno = moment(url.searchParams.get("dosisuno")).locale('es').format('LL');
+
+
+dpiUsuario.innerHTML =  cui;
+nombreUsuario.innerHTML =  nombre;
+puestoVacunacion.innerHTML =  lugar;
+dosisuno.innerHTML =  fechadosisuno;
+dosisdos.innerHTML =  "Aun sin fecha asignada";
+dosistres.innerHTML =  "Aun sin fecha asignada";
+
+</script>
+
 </html>

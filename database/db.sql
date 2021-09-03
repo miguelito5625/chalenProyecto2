@@ -76,6 +76,8 @@ AS
          usuario.nombres     AS nombres_usuario,
          usuario.apellidos   AS apellidos_usuario,
          usuario.nacimiento  AS nacimiento_usuario,
+         usuario.clave  AS clave_usuario,
+         usuario.idRol  AS idRol_usuario,
          vacuna.id           AS id_vacuna,
          vacuna.nombre       AS nombre_vacuna
   FROM   grupo_vacunacion
