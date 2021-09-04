@@ -14,31 +14,31 @@
     <table width="70%" border="5px" align="center">
 
         <tr align="center">
-            <TR>
-                <TH>DPI</th>
-                <TD id="dpiUsuario">Texto de la base de datos</TD>
-                <TR>
-                    <TH>Nombre</th>
-                    <TD id="nombreUsuario">Texto de la base de datos</TD>
-                    <TR>
-                        <TH>puesto de Vacunacion</th>
-                        <TD id="puestoVacunacion">Texto de la base de datos</TD>
-                    </tr>
+        <TR>
+            <TH>DPI</th>
+            <TD id="dpiUsuario">Texto de la base de datos</TD>
+        <TR>
+            <TH>Nombre</th>
+            <TD id="nombreUsuario">Texto de la base de datos</TD>
+        <TR>
+            <TH>puesto de Vacunacion</th>
+            <TD id="puestoVacunacion">Texto de la base de datos</TD>
+        </tr>
     </table>
     <h1 align="center">Fecha de Administracion</h1>
     <table width="70%" border="5px" align="center">
 
         <tr align="center">
-            <TR>
-                <TH>1ra. Dosis</th>
-                <TD id="dosisuno">Texto de la base de datos</TD>
-                <TR>
-                    <TH>2da. Dosis</th>
-                    <TD id="dosisdos">Texto de la base de datos</TD>
-                    <TR>
-                        <TH>Refuerzo</th>
-                        <TD id="dosistres">Texto de la base de datos</TD>
-                    </tr>
+        <TR>
+            <TH>1ra. Dosis</th>
+            <TD id="dosisuno">Texto de la base de datos</TD>
+        <TR>
+            <TH>2da. Dosis</th>
+            <TD id="dosisdos">Texto de la base de datos</TD>
+        <TR>
+            <TH>Refuerzo</th>
+            <TD id="dosistres">Texto de la base de datos</TD>
+        </tr>
     </table>
 
     <a class="boton" href="" target="_blank">atras</a>
@@ -47,28 +47,29 @@
 </body>
 
 <script>
-var dpiUsuario = document.getElementById("dpiUsuario");
-var nombreUsuario = document.getElementById("nombreUsuario");
-var puestoVacunacion = document.getElementById("puestoVacunacion");
-var dosisuno = document.getElementById("dosisuno");
-var dosisdos = document.getElementById("dosisdos");
-var dosistres = document.getElementById("dosistres");
-// dpiUsuario.innerHTML = "esto es una prueba";
+    var dpiUsuario = document.getElementById("dpiUsuario");
+    var nombreUsuario = document.getElementById("nombreUsuario");
+    var puestoVacunacion = document.getElementById("puestoVacunacion");
+    var dosisuno = document.getElementById("dosisuno");
+    var dosisdos = document.getElementById("dosisdos");
+    var dosistres = document.getElementById("dosistres");
+    // dpiUsuario.innerHTML = "esto es una prueba";
 
-var url_string = window.location.href;
-var url = new URL(url_string);
-var cui = url.searchParams.get("cui");
-var nombre = url.searchParams.get("nombre");
-var lugar = url.searchParams.get("lugar");
-var fechadosisuno = moment(url.searchParams.get("dosisuno")).locale('es').format('LL');
+    var url_string = window.location.href;
+    var url = new URL(url_string);
+    var cui = url.searchParams.get("cui");
+    var nombre = url.searchParams.get("nombre");
+    var lugar = url.searchParams.get("lugar");
+    var fecha1 = url.searchParams.get("fecha1")=='null'?'No asignada':moment(url.searchParams.get("fecha1")).locale('es').format('LL');
+    var fecha2 = url.searchParams.get("fecha2")=='null'?'No asignada':moment(url.searchParams.get("fecha2")).locale('es').format('LL');
+    var fecha3 = url.searchParams.get("fecha3")=='null'?'No asignada':moment(url.searchParams.get("fecha3")).locale('es').format('LL');
 
-
-dpiUsuario.innerHTML =  cui;
-nombreUsuario.innerHTML =  nombre;
-puestoVacunacion.innerHTML =  lugar;
-dosisuno.innerHTML =  fechadosisuno;
-dosisdos.innerHTML =  "Aun sin fecha asignada";
-dosistres.innerHTML =  "Aun sin fecha asignada";
+    dpiUsuario.innerHTML = cui;
+    nombreUsuario.innerHTML = nombre;
+    puestoVacunacion.innerHTML = lugar;
+    dosisuno.innerHTML = fecha1;
+    dosisdos.innerHTML = fecha2;
+    dosistres.innerHTML = fecha3;
 
 </script>
 

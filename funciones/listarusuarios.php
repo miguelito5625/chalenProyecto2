@@ -3,7 +3,14 @@ header('Content-Type: application/json');
 
 include 'conexion.php';
 
-$sql = "SELECT id, cui, nombres, apellidos, nacimiento FROM usuario WHERE idRol = 2;";
+$sql = "SELECT id, cui, nombres, apellidos, nacimiento FROM usuario users WHERE idRol = 2
+AND NOT EXISTS 
+(
+SELECT * FROM grupo_vacunacion gv
+WHERE
+users.id = gv.idUsuario
+);";
+
 $result = $conn->query($sql);
 $rows = array();
 $conn->close();

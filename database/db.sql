@@ -56,7 +56,9 @@ CREATE TABLE usuario
 CREATE TABLE grupo_vacunacion
   (
      id        INT NOT NULL PRIMARY KEY auto_increment,
-     fecha     DATE NOT NULL,
+     fecha     DATE NULL,
+     fecha2     DATE NULL,
+     fecha3     DATE NULL,
      lugar     VARCHAR(50) NOT NULL,
      idusuario INT NOT NULL,
      idvacuna  INT NOT NULL,
@@ -69,7 +71,9 @@ CREATE TABLE grupo_vacunacion
 CREATE OR REPLACE view vista_grupos_vacunacion
 AS
   SELECT grupo_vacunacion.id AS id_grupo_vacunacion,
-         grupo_vacunacion.fecha,
+         grupo_vacunacion.fecha1,
+         grupo_vacunacion.fecha2,
+         grupo_vacunacion.fecha3,
          grupo_vacunacion.lugar,
          usuario.id          AS id_usuario,
          usuario.cui,

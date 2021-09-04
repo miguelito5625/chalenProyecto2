@@ -24,9 +24,12 @@ function registroUsuario() {
 
             console.log(response);
 
+            alert("Usuario creado");
+
         },
         error: function (jqXHR, textStatus, errorThrown) {
             console.log(textStatus, errorThrown);
+            alert("Error, no se puedo crear el usuario");
         }
     });
 }
@@ -113,10 +116,12 @@ function inicioSesionUsuario() {
                         //Redireccionar aqui
                         const cui = response.usuario[0].cui;
                         const lugar = response.usuario[0].lugar;
-                        const dosisuno = response.usuario[0].fecha;
+                        const fecha1 = response.usuario[0].fecha1;
+                        const fecha2 = response.usuario[0].fecha2;
+                        const fecha3 = response.usuario[0].fecha3;
                         const nombre = response.usuario[0].nombres_usuario + ' ' + response.usuario[0].apellidos_usuario;
                         
-                        window.location.href = `../sistema/usuario/principal.html?cui=${cui}&nombre=${nombre}&lugar=${lugar}&dosisuno=${dosisuno}`;
+                        window.location.href = `../sistema/usuario/principal.html?cui=${cui}&nombre=${nombre}&lugar=${lugar}&fecha1=${fecha1}&fecha2=${fecha2}&fecha3=${fecha3}`;
                     });
                 }, 100);
             } else {

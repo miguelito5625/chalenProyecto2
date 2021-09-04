@@ -78,7 +78,9 @@ $(document).ready(function () {
 function guardarAsociacion(){
 
     const datos = {
-        fecha: document.getElementById("fecha_vacunacion").value,
+        fecha1: document.getElementById("fecha_vacunacion1").value,
+        fecha2: document.getElementById("fecha_vacunacion2").value,
+        fecha3: document.getElementById("fecha_vacunacion3").value,
         lugar: centro_vacunacion,
         idUsuario: idUsuario,
         idVacuna: idVacuna

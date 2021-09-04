@@ -14,6 +14,7 @@ $rol = 2;
  if ($conn->query($sql) === TRUE) {
     echo "Usuario creado";
   } else {
+    var_dump(http_response_code(500));
     echo "Error: " . $sql . "<br>" . $conn->error;
   }
  $conn->close();

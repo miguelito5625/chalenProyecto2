@@ -36,39 +36,50 @@
             <div class="card-body">
                 <h5 class="card-title">Asociar vacuna</h5>
 
-                    <div class="input-group mb-3">
-                        <input type="text" id="inputUsuarioSeleccionado" class="form-control" placeholder="Seleccionar usuario" readonly>
-                        <div class="input-group-append">
-                            <button class="btn btn-outline-secondary" type="button" data-toggle="modal" data-target="#modalUsuarios">Buscar</button>
-                        </div>
+                <div class="input-group mb-3">
+                    <input type="text" id="inputUsuarioSeleccionado" class="form-control"
+                        placeholder="Seleccionar usuario" readonly>
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="button" data-toggle="modal"
+                            data-target="#modalUsuarios">Buscar</button>
                     </div>
+                </div>
 
-                    <div class="form-group">
+                <div class="form-group">
 
-                        <select id="selectVacunas" class="selectpicker form-control mb-3" data-style="btn-dark"
-                            title="Seleccione una vacuna" data-live-search="true">
-                            <!-- <option data-tokens="ketchup mustard">Hot Dog, Fries and a Soda</option> -->
-                            </select>
+                    <select id="selectVacunas" class="selectpicker form-control mb-3" data-style="btn-dark"
+                        title="Seleccione una vacuna" data-live-search="true">
+                        <!-- <option data-tokens="ketchup mustard">Hot Dog, Fries and a Soda</option> -->
+                    </select>
 
-                    </div>
+                </div>
 
-                    <div class="form-group">
+                <div class="form-group">
 
-                        <select id="selectCentrosVacunacion" class="selectpicker form-control mb-3" data-style="btn-dark"
-                            title="Seleccione el centro de vacunacion" data-live-search="true">
-                            <!-- <option data-tokens="ketchup mustard">Hot Dog, Fries and a Soda</option> -->
-                        </select>
+                    <select id="selectCentrosVacunacion" class="selectpicker form-control mb-3" data-style="btn-dark"
+                        title="Seleccione el centro de vacunacion" data-live-search="true">
+                        <!-- <option data-tokens="ketchup mustard">Hot Dog, Fries and a Soda</option> -->
+                    </select>
 
-                    </div>
+                </div>
 
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Establecer Fecha</label>
-                        <input type="date" class="form-control" id="fecha_vacunacion" aria-describedby="emailHelp">
-                      </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Fecha primera dosis</label>
+                    <input type="date" class="form-control" id="fecha_vacunacion1" aria-describedby="emailHelp">
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Fecha segunda dosis</label>
+                    <input type="date" class="form-control" id="fecha_vacunacion2" aria-describedby="emailHelp">
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Fecha tercera dosis</label>
+                    <input type="date" class="form-control" id="fecha_vacunacion3" aria-describedby="emailHelp">
+                </div>
 
 
-
-                    <button class="btn btn-primary" onClick="guardarAsociacion()">Guardar</button>
+                <button class="btn btn-primary" onClick="guardarAsociacion()">Guardar</button>
 
 
             </div>
@@ -79,47 +90,48 @@
 
 
     <!-- Modal -->
-<div class="modal fade" id="modalUsuarios" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="modalUsuariosLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="modalUsuariosLabel">Seleccione un usuario</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-         
-            <table id="tabla_usuarios" class="display" style="width:100%">
-                <thead>
-                    <tr>
-                        <th>id</th>
-                        <th>Cui</th>
-                        <th>Nombres</th>
-                        <th>Apellidos</th>
-                        <th>Nacimiento</th>
-                    </tr>
-                </thead>
-                <tfoot>
-                    <tr>
-                        <th>id</th>
-                        <th>Cui</th>
-                        <th>Nombres</th>
-                        <th>Apellidos</th>
-                        <th>Nacimiento</th>
-                    </tr>
-                </tfoot>
-            </table>
-            
+    <div class="modal fade" id="modalUsuarios" data-backdrop="static" data-keyboard="false" tabindex="-1"
+        aria-labelledby="modalUsuariosLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalUsuariosLabel">Seleccione un usuario</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
 
-        </div>
-        <!-- <div class="modal-footer">
+                    <table id="tabla_usuarios" class="display" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>id</th>
+                                <th>Cui</th>
+                                <th>Nombres</th>
+                                <th>Apellidos</th>
+                                <th>Nacimiento</th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th>id</th>
+                                <th>Cui</th>
+                                <th>Nombres</th>
+                                <th>Apellidos</th>
+                                <th>Nacimiento</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+
+
+                </div>
+                <!-- <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
           <button type="button" class="btn btn-primary" data-dismiss="modal">Understood</button>
         </div> -->
-      </div>
+            </div>
+        </div>
     </div>
-  </div>
 
     <script src="js/asociar.js"></script>
 
