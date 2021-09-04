@@ -56,7 +56,7 @@ CREATE TABLE usuario
 CREATE TABLE grupo_vacunacion
   (
      id        INT NOT NULL PRIMARY KEY auto_increment,
-     fecha     DATE NULL,
+     fecha1     DATE NULL,
      fecha2     DATE NULL,
      fecha3     DATE NULL,
      lugar     VARCHAR(50) NOT NULL,
@@ -85,5 +85,5 @@ AS
          vacuna.id           AS id_vacuna,
          vacuna.nombre       AS nombre_vacuna
   FROM   grupo_vacunacion
-         INNER JOIN usuario USING (id)
-         INNER JOIN vacuna USING (id); 
+         INNER JOIN usuario ON grupo_vacunacion.idusuario = usuario.id
+         INNER JOIN vacuna ON grupo_vacunacion.idvacuna = vacuna.id;
