@@ -10,5 +10,5 @@ $dbname = "rmorales";
 
 $conn = mysqli_connect($servername, $username, $password, $dbname);
 if (!$conn) {
-die("Fallo conectarse por: " . mysqli_connect_error());
+die("Fallo conectarse por: " . mysqli_connect_error());//hola
 }
